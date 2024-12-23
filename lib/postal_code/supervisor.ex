@@ -1,4 +1,5 @@
 defmodule Deliverex.PostalCode.Supervisor do
+  alias Deliverex.PostalCode.Postman
   alias Deliverex.PostalCode.Navigator
   alias Deliverex.PostalCode.Store
   use Supervisor
@@ -10,7 +11,8 @@ defmodule Deliverex.PostalCode.Supervisor do
   def init(_) do
     children = [
       Navigator,
-      Store
+      Store,
+      Postman
     ]
 
     Supervisor.init(children, strategy: :one_for_one)
